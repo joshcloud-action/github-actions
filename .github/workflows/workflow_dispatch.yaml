@@ -1,0 +1,31 @@
+name: workflow-dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'set name' #무엇을 위한 변수인지 설명
+        required: true #필수 입력 변수인지 
+        default: 'github-actions' #미입력시 기본값
+        type: string #자료형 지정
+      environment:
+        description: 'set env'
+        required: true
+        default: 'dev'
+        type: choice #깃헙액션에서 제공하는 자료형. 선택옵션
+        options:
+          - dev
+          - prod
+jobs:
+  workflow-dispatch-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1
+        run: echo Hello, world!
+      - name: step2
+        run: |
+          echo Hello, world!
+          echo github action!
+      - name: echo inputs
+        run: |
+          echo "NAME: ${{ inputs.name }}"
+          echo "ENVIRONMENT: ${{ inputs.environment }}"
