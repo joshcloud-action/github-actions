@@ -10,4 +10,4 @@ jobs:
       - name: check github-context
         run:  | 
           echo ${{ github.repository }}
-          echo ${{ github.eventName }}
+          echo ${{ github.event_name }}
